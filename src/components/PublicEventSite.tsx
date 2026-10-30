@@ -86,121 +86,110 @@ export const PublicEventSite = ({
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-10 sm:pt-16 pb-16 sm:pb-24 overflow-hidden">
-        {/* Subtle decorative gold light glow in background */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-b from-gold-500/15 via-gold-600/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <section className="relative pt-10 sm:pt-16 pb-16 sm:pb-24 overflow-hidden min-h-[580px] lg:min-h-[640px] flex items-center">
+        {/* Imagem Real de Fundo: Grande, atrás do texto, ficando mais visível conforme mais à direita */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0">
+          <div
+            className="absolute right-0 top-0 bottom-0 w-full sm:w-[85%] md:w-[75%] lg:w-[65%] xl:w-[60%] h-full"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 20%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.85) 75%, black 100%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.15) 20%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0.85) 75%, black 100%)',
+            }}
+          >
+            <img
+              src={`${baseUrl}assets/carteira-oficial-real.png`}
+              alt="Carteira Profissional de Farmacêutico CRF"
+              className="w-full h-full object-cover object-[right_center] filter brightness-[0.95] contrast-[1.08]"
+            />
+            {/* Esfumaçado vertical superior e inferior */}
+            <div className="absolute inset-0 bg-gradient-to-t from-leather-950 via-transparent to-leather-950/80" />
+            {/* Esfumaçado lateral da esquerda para a direita */}
+            <div className="absolute inset-0 bg-gradient-to-r from-leather-950 via-leather-950/40 to-transparent" />
+          </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left Column: Solene Headline & Details */}
-            <div className="lg:col-span-7 text-center lg:text-left space-y-6">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs font-serif tracking-widest uppercase">
-                <Sparkles className="w-3.5 h-3.5 text-gold-400" />
-                <span>{settings.edition}</span>
+          {/* Halo dourado sutil no fundo iluminando a carteira */}
+          <div className="absolute right-12 top-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-bl from-gold-500/20 via-gold-600/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[300px] bg-gradient-to-b from-gold-500/10 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 relative z-10 w-full">
+          {/* Conteúdo sobreposto ao fundo, com máxima legibilidade e destaque */}
+          <div className="max-w-2xl lg:max-w-3xl space-y-6">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-leather-900/90 border border-gold-500/40 text-gold-300 text-xs font-serif tracking-widest uppercase shadow-lg backdrop-blur-md">
+              <Sparkles className="w-3.5 h-3.5 text-gold-400" />
+              <span>{settings.edition}</span>
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold font-serif tracking-tight leading-[1.12] text-gold-50 drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+              Solenidade de Outorga e Entrega das{' '}
+              <span className="gold-text-shimmer drop-shadow-[0_2px_10px_rgba(212,175,55,0.4)]">
+                Carteiras Profissionais
+              </span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-sm sm:text-base text-gold-200/90 max-w-xl leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
+              O <strong>Conselho Regional de Farmácia de Alagoas (CRF/AL)</strong> tem a honra de convidar os novos farmacêuticos e farmacêuticas para o ato solene de juramento e outorga da sua identidade profissional definitiva.
+            </p>
+
+            {/* Key Highlights Cards (Data, Local, Horário) */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 max-w-2xl">
+              <div className="p-3.5 rounded-xl bg-leather-900/90 border border-gold-500/30 backdrop-blur-md shadow-lg">
+                <div className="flex items-center gap-2 text-gold-400 mb-1">
+                  <Calendar className="w-4 h-4" />
+                  <span className="text-[11px] font-serif uppercase tracking-wider font-semibold">Data</span>
+                </div>
+                <p className="text-xs font-bold text-gold-100 capitalize">{formattedDate}</p>
               </div>
 
-              {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-serif tracking-tight leading-[1.15] text-gold-50">
-                Solenidade de Outorga e Entrega das{' '}
-                <span className="gold-text-shimmer">
-                  Carteiras Profissionais
-                </span>
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-sm sm:text-base text-gold-200/80 max-w-2xl leading-relaxed">
-                O <strong>Conselho Regional de Farmácia de Alagoas (CRF/AL)</strong> tem a honra de convidar os novos farmacêuticos e farmacêuticas para o ato solene de juramento e outorga da sua identidade profissional definitiva.
-              </p>
-
-              {/* Key Highlights Cards (Data, Local, Horário) */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                <div className="p-3.5 rounded-xl bg-leather-900/80 border border-gold-500/25 backdrop-blur-sm">
-                  <div className="flex items-center gap-2 text-gold-400 mb-1">
-                    <Calendar className="w-4 h-4" />
-                    <span className="text-[11px] font-serif uppercase tracking-wider font-semibold">Data</span>
-                  </div>
-                  <p className="text-xs font-bold text-gold-100 capitalize">{formattedDate}</p>
+              <div className="p-3.5 rounded-xl bg-leather-900/90 border border-gold-500/30 backdrop-blur-md shadow-lg">
+                <div className="flex items-center gap-2 text-gold-400 mb-1">
+                  <Clock className="w-4 h-4" />
+                  <span className="text-[11px] font-serif uppercase tracking-wider font-semibold">Horário</span>
                 </div>
-
-                <div className="p-3.5 rounded-xl bg-leather-900/80 border border-gold-500/25 backdrop-blur-sm">
-                  <div className="flex items-center gap-2 text-gold-400 mb-1">
-                    <Clock className="w-4 h-4" />
-                    <span className="text-[11px] font-serif uppercase tracking-wider font-semibold">Horário</span>
-                  </div>
-                  <p className="text-xs font-bold text-gold-100">{settings.time} (Portões: {settings.doorsOpenTime})</p>
-                </div>
-
-                <div className="p-3.5 rounded-xl bg-leather-900/80 border border-gold-500/25 backdrop-blur-sm">
-                  <div className="flex items-center gap-2 text-gold-400 mb-1">
-                    <MapPin className="w-4 h-4" />
-                    <span className="text-[11px] font-serif uppercase tracking-wider font-semibold">Local</span>
-                  </div>
-                  <p className="text-xs font-bold text-gold-100 truncate">{settings.venueName}</p>
-                </div>
+                <p className="text-xs font-bold text-gold-100">{settings.time} (Portões: {settings.doorsOpenTime})</p>
               </div>
 
-              {/* CTA Action Bar */}
-              <div className="flex flex-col sm:flex-row items-center gap-3 pt-3">
-                <button
-                  onClick={scrollToRSVP}
-                  className="w-full sm:w-auto px-7 py-3.5 rounded-xl font-serif font-bold text-sm uppercase tracking-widest transition-all duration-300 shadow-[0_10px_30px_rgba(212,175,55,0.4)] hover:shadow-[0_12px_35px_rgba(212,175,55,0.6)] text-leather-950 bg-gradient-to-r from-[#FFF6D6] via-[#D4AF37] to-[#B88A22] border border-gold-300 flex items-center justify-center gap-2"
-                >
-                  <span>Confirmar Minha Presença</span>
-                  <ArrowRight className="w-4 h-4 text-leather-950" />
-                </button>
-
-                <button
-                  onClick={() => setIsSearchModalOpen(true)}
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-leather-900/90 hover:bg-leather-800 border border-gold-500/30 text-gold-200 text-xs font-serif font-semibold tracking-wider uppercase transition flex items-center justify-center gap-2"
-                >
-                  <Search className="w-4 h-4 text-gold-400" />
-                  <span>Consultar Meu Passe Solene</span>
-                </button>
-              </div>
-
-              <div className="flex items-center justify-center lg:justify-start gap-4 text-xs text-gold-400/70 pt-1">
-                <span className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  Passe digital com QR Code instantâneo
-                </span>
-                <span>•</span>
-                <span className="flex items-center gap-1.5">
-                  <Users className="w-4 h-4 text-gold-400" />
-                  Até 2 acompanhantes
-                </span>
+              <div className="p-3.5 rounded-xl bg-leather-900/90 border border-gold-500/30 backdrop-blur-md shadow-lg">
+                <div className="flex items-center gap-2 text-gold-400 mb-1">
+                  <MapPin className="w-4 h-4" />
+                  <span className="text-[11px] font-serif uppercase tracking-wider font-semibold">Local</span>
+                </div>
+                <p className="text-xs font-bold text-gold-100 truncate">{settings.venueName}</p>
               </div>
             </div>
 
-            {/* Right Column: Foto Oficial Real da Carteira com Efeito Esfumaçado */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center">
-              <div className="relative w-full max-w-[340px] sm:max-w-[400px] group">
-                {/* Halo dourado e marrom ambiente suave */}
-                <div className="absolute -inset-4 bg-gradient-to-tr from-gold-600/15 via-gold-400/20 to-leather-800/40 rounded-3xl blur-2xl opacity-60 pointer-events-none transition duration-700 group-hover:opacity-80" />
+            {/* CTA Action Bar */}
+            <div className="flex flex-col sm:flex-row items-center gap-3 pt-3">
+              <button
+                onClick={scrollToRSVP}
+                className="w-full sm:w-auto px-7 py-3.5 rounded-xl font-serif font-bold text-sm uppercase tracking-widest transition-all duration-300 shadow-[0_10px_30px_rgba(212,175,55,0.4)] hover:shadow-[0_12px_35px_rgba(212,175,55,0.6)] text-leather-950 bg-gradient-to-r from-[#FFF6D6] via-[#D4AF37] to-[#B88A22] border border-gold-300 flex items-center justify-center gap-2"
+              >
+                <span>Confirmar Minha Presença</span>
+                <ArrowRight className="w-4 h-4 text-leather-950" />
+              </button>
 
-                {/* Moldura com efeito esfumaçado nas bordas */}
-                <div className="relative rounded-2xl overflow-hidden border border-gold-500/25 shadow-[0_20px_50px_rgba(0,0,0,0.85)] bg-leather-950">
-                  <img
-                    src={`${baseUrl}assets/carteira-oficial-real.png`}
-                    alt="Carteira de Identidade Profissional de Farmacêutico CRF"
-                    className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02] filter brightness-95 contrast-105"
-                  />
+              <button
+                onClick={() => setIsSearchModalOpen(true)}
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-leather-900/90 hover:bg-leather-800 border border-gold-500/30 text-gold-200 text-xs font-serif font-semibold tracking-wider uppercase transition flex items-center justify-center gap-2 backdrop-blur-md"
+              >
+                <Search className="w-4 h-4 text-gold-400" />
+                <span>Consultar Meu Passe Solene</span>
+              </button>
+            </div>
 
-                  {/* Efeito esfumaçado (vignette e gradientes suaves para fundir com o fundo de couro) */}
-                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-leather-950 via-transparent to-leather-950/20 opacity-80" />
-                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-leather-950/60 via-transparent to-leather-950/60" />
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      boxShadow: 'inset 0 0 40px 18px #100804',
-                    }}
-                  />
-                </div>
-
-                <p className="text-[11px] text-gold-300/70 font-serif italic text-center mt-3 tracking-wide">
-                  Documento Oficial de Identidade Profissional de Farmacêutico
-                </p>
-              </div>
+            <div className="flex items-center justify-center sm:justify-start gap-4 text-xs text-gold-400/80 pt-1">
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                Passe digital com QR Code instantâneo
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1.5">
+                <Users className="w-4 h-4 text-gold-400" />
+                Até 2 acompanhantes
+              </span>
             </div>
           </div>
         </div>
