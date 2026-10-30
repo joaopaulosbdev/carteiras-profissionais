@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#24140D" stroke="#D4AF37" stroke-width="2"/>
+  <!-- Chalice of Hygieia in Gold -->
+  <path d="M22 18 C22 30, 42 30, 42 18 Z" fill="none" stroke="#D4AF37" stroke-width="3" stroke-linecap="round"/>
+  <line x1="32" y1="28" x2="32" y2="46" stroke="#D4AF37" stroke-width="3" stroke-linecap="round"/>
+  <path d="M24 46 L40 46" stroke="#D4AF37" stroke-width="3" stroke-linecap="round"/>
+  <!-- Serpent winding -->
+  <path d="M38 14 C36 12 32 12 30 15 C28 18 36 22 34 26 C32 30 28 32 32 36" fill="none" stroke="#FFF3C4" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="38" cy="14" r="1.5" fill="#FFE29F"/>
+</svg>
