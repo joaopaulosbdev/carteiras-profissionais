@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#180C07" />
+    <title>Solenidade de Entrega das Carteiras Profissionais | CRF/AL</title>
+    
+    <!-- Google Fonts: Cinzel (clássica, solene e dourada) & Plus Jakarta Sans (moderna e legível) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-leather-950 text-gold-50 selection:bg-gold-500 selection:text-leather-950 antialiased min-h-screen">
+    <!-- SVG Filters for Gold Leaf & Metallic Effect -->
+    <svg width="0" height="0" class="absolute">
+      <defs>
+        <filter id="gold-metal-filter" color-interpolation-filters="sRGB">
+          <!-- Convert original logo to grayscale then map to luxury gold -->
+          <feColorMatrix type="matrix" values="
+            0.33 0.33 0.33 0 0
+            0.33 0.33 0.33 0 0
+            0.33 0.33 0.33 0 0
+            0    0    0    1 0" />
+          <feComponentTransfer>
+            <feFuncR type="linear" slope="1.0" intercept="0.1"/>
+            <feFuncG type="linear" slope="0.82" intercept="0.05"/>
+            <feFuncB type="linear" slope="0.32" intercept="0"/>
+          </feComponentTransfer>
+        </filter>
+      </defs>
+    </svg>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
