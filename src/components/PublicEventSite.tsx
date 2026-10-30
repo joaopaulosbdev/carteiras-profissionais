@@ -15,7 +15,6 @@ import {
 } from 'lucide-react';
 import type { EventSettings, PharmacistConfirmation } from '../types';
 import { CRFALLogo } from './CRFALLogo';
-import { CarteiraMockup } from './CarteiraMockup';
 import { RSVPForm } from './RSVPForm';
 import { SearchConfirmationModal } from './SearchConfirmationModal';
 
@@ -32,9 +31,7 @@ export const PublicEventSite = ({
   onOpenAdmin,
   onOpenTicket,
 }: PublicEventSiteProps) => {
-  const [typedName, setTypedName] = useState('');
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  const [logoVariant, setLogoVariant] = useState<'marrom-dourado' | 'dourado'>('marrom-dourado');
 
   const formattedDate = new Date(settings.date + 'T12:00:00').toLocaleDateString('pt-BR', {
     weekday: 'long',
@@ -47,44 +44,20 @@ export const PublicEventSite = ({
     document.getElementById('confirmar-presenca')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+
   return (
     <div className="min-h-screen flex flex-col bg-leather-950 text-gold-50 selection:bg-gold-500 selection:text-leather-950">
       {/* Top Banner & Header */}
       <header className="sticky top-0 z-40 bg-leather-950/85 backdrop-blur-md border-b border-gold-500/20 px-4 sm:px-8 py-3.5 transition">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Logo in Marrom & Ouro da Carteira */}
+          {/* Logo fixa em Ouro Foil da Carteira */}
           <div className="flex items-center gap-3">
-            <CRFALLogo variant={logoVariant} size="md" showSubtitle={true} />
+            <CRFALLogo variant="dourado" size="md" showSubtitle={true} />
           </div>
 
           {/* Navigation & Action */}
           <div className="flex items-center gap-2 sm:gap-4">
-            {/* Seletor de Tonalidade da Logo (Geometria 100% Original) */}
-            <div className="hidden lg:flex items-center bg-leather-900 border border-gold-500/30 rounded-full p-0.5 text-[10px]">
-              <button
-                onClick={() => setLogoVariant('marrom-dourado')}
-                className={`px-2.5 py-1 rounded-full transition ${
-                  logoVariant === 'marrom-dourado'
-                    ? 'bg-gold-500 text-leather-950 font-bold'
-                    : 'text-gold-300 hover:text-gold-100'
-                }`}
-                title="Logo anexada nas cores Marrom e Dourado"
-              >
-                Logo Marrom & Dourado
-              </button>
-              <button
-                onClick={() => setLogoVariant('dourado')}
-                className={`px-2.5 py-1 rounded-full transition ${
-                  logoVariant === 'dourado'
-                    ? 'bg-gold-500 text-leather-950 font-bold'
-                    : 'text-gold-300 hover:text-gold-100'
-                }`}
-                title="Logo anexada em Ouro Foil da Carteira"
-              >
-                Logo Ouro Foil
-              </button>
-            </div>
-
             <button
               onClick={() => setIsSearchModalOpen(true)}
               className="px-3 sm:px-4 py-2 rounded-xl bg-leather-900 hover:bg-leather-800 border border-gold-500/30 text-gold-200 text-xs font-semibold flex items-center gap-2 transition"
@@ -199,21 +172,35 @@ export const PublicEventSite = ({
               </div>
             </div>
 
-            {/* Right Column: Physical Carteira Profissional 3D Mockup */}
+            {/* Right Column: Foto Oficial Real da Carteira com Efeito Esfumaçado */}
             <div className="lg:col-span-5 flex flex-col items-center justify-center">
-              <div className="text-center mb-3">
-                <span className="text-[10px] font-mono tracking-widest text-gold-400 uppercase">
-                  Identidade Visual Solene • Marrom & Dourado
-                </span>
+              <div className="relative w-full max-w-[340px] sm:max-w-[400px] group">
+                {/* Halo dourado e marrom ambiente suave */}
+                <div className="absolute -inset-4 bg-gradient-to-tr from-gold-600/15 via-gold-400/20 to-leather-800/40 rounded-3xl blur-2xl opacity-60 pointer-events-none transition duration-700 group-hover:opacity-80" />
+
+                {/* Moldura com efeito esfumaçado nas bordas */}
+                <div className="relative rounded-2xl overflow-hidden border border-gold-500/25 shadow-[0_20px_50px_rgba(0,0,0,0.85)] bg-leather-950">
+                  <img
+                    src={`${baseUrl}assets/carteira-oficial-real.png`}
+                    alt="Carteira de Identidade Profissional de Farmacêutico CRF"
+                    className="w-full h-auto object-cover transform transition-transform duration-700 group-hover:scale-[1.02] filter brightness-95 contrast-105"
+                  />
+
+                  {/* Efeito esfumaçado (vignette e gradientes suaves para fundir com o fundo de couro) */}
+                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-leather-950 via-transparent to-leather-950/20 opacity-80" />
+                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-leather-950/60 via-transparent to-leather-950/60" />
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      boxShadow: 'inset 0 0 40px 18px #100804',
+                    }}
+                  />
+                </div>
+
+                <p className="text-[11px] text-gold-300/70 font-serif italic text-center mt-3 tracking-wide">
+                  Documento Oficial de Identidade Profissional de Farmacêutico
+                </p>
               </div>
-              <CarteiraMockup pharmacistName={typedName} />
-              <p className="text-[11px] text-gold-400/60 font-serif italic mt-4 text-center max-w-xs">
-                {typedName ? (
-                  <>Personalizada para <strong className="text-gold-200">{typedName}</strong></>
-                ) : (
-                  'Digite seu nome no formulário abaixo para visualizar sua carteira'
-                )}
-              </p>
             </div>
           </div>
         </div>
@@ -237,7 +224,6 @@ export const PublicEventSite = ({
           <RSVPForm
             settings={settings}
             onSuccess={onConfirmationSuccess}
-            onNameChange={setTypedName}
           />
         </div>
       </section>
@@ -364,7 +350,7 @@ export const PublicEventSite = ({
       <footer className="mt-auto bg-leather-950 border-t border-gold-500/25 py-8 text-center text-xs text-gold-400/70">
         <div className="max-w-7xl mx-auto px-4 space-y-4">
           <div className="flex justify-center">
-            <CRFALLogo variant={logoVariant} size="sm" showSubtitle={true} />
+            <CRFALLogo variant="dourado" size="sm" showSubtitle={true} />
           </div>
           <p className="text-gold-200/90 font-serif">
             CONSELHO REGIONAL DE FARMÁCIA DO ESTADO DE ALAGOAS • CRF/AL

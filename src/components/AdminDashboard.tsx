@@ -200,7 +200,7 @@ export const AdminDashboard = ({
         {/* Top Navbar */}
         <header className="sticky top-0 z-30 bg-leather-900/90 border-b border-gold-500/25 backdrop-blur-md px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <CRFALLogo variant="marrom-dourado" size="sm" showSubtitle={false} />
+            <CRFALLogo variant="dourado" size="sm" showSubtitle={false} />
             <div className="border-l border-gold-500/30 pl-3">
               <span className="text-[10px] uppercase font-mono tracking-wider text-gold-400 block">
                 Painel Administrativo

@@ -9,7 +9,7 @@ interface CRFALLogoProps {
 
 export const CRFALLogo: React.FC<CRFALLogoProps> = ({
   className = '',
-  variant = 'marrom-dourado',
+  variant: _variant = 'dourado',
   size = 'md',
   showSubtitle = true,
 }) => {
@@ -21,13 +21,7 @@ export const CRFALLogo: React.FC<CRFALLogoProps> = ({
   };
 
   const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
-  const imageSrcMap = {
-    'marrom-dourado': `${base}assets/crfal-logo-marrom-dourado.png`,
-    'dourado': `${base}assets/crfal-logo-dourado.png`,
-    'carteira': `${base}assets/crfal-logo-carteira.png`,
-  };
-
-  const imageSrc = imageSrcMap[variant] || imageSrcMap['marrom-dourado'];
+  const imageSrc = `${base}assets/crfal-logo-dourado.png`;
 
   return (
     <div className={`relative inline-flex flex-col items-center select-none ${className}`}>

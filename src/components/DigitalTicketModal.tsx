@@ -92,7 +92,7 @@ export const DigitalTicketModal = ({
           <div className="p-6 sm:p-8">
             {/* Header: Logo and Edition */}
             <div className="flex flex-col sm:flex-row items-center justify-between border-b border-gold-500/30 pb-5 gap-4">
-              <CRFALLogo variant="marrom-dourado" size="md" showSubtitle={false} />
+              <CRFALLogo variant="dourado" size="md" showSubtitle={false} />
               <div className="text-center sm:text-right">
                 <span className="inline-block px-2.5 py-0.5 rounded-full bg-gold-500/15 border border-gold-500/40 text-[10px] font-semibold text-gold-300 uppercase tracking-widest mb-1">
                   {settings.edition}
