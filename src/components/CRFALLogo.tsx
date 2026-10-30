@@ -20,10 +20,11 @@ export const CRFALLogo: React.FC<CRFALLogoProps> = ({
     xl: 'h-24 sm:h-28',
   };
 
+  const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
   const imageSrcMap = {
-    'marrom-dourado': '/assets/crfal-logo-marrom-dourado.png',
-    'dourado': '/assets/crfal-logo-dourado.png',
-    'carteira': '/assets/crfal-logo-carteira.png',
+    'marrom-dourado': `${base}assets/crfal-logo-marrom-dourado.png`,
+    'dourado': `${base}assets/crfal-logo-dourado.png`,
+    'carteira': `${base}assets/crfal-logo-carteira.png`,
   };
 
   const imageSrc = imageSrcMap[variant] || imageSrcMap['marrom-dourado'];
